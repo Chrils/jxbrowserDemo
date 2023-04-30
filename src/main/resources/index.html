@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="数据流转" name="first">{{formDatas}}</el-tab-pane>
+        <el-tab-pane label="日志记录" name="second">
+            <el-alert
+                    title="成功提示的文案"
+                    show-icon
+                    :closable = "false"
+                    type="success">
+            </el-alert>
+            <el-alert
+                    title="警告提示的文案"
+                    show-icon
+                    :closable = "false"
+                    type="warning">
+            </el-alert>
+            <el-alert
+                    title="错误提示的文案"
+                    show-icon
+                    :closable = "false"
+                    type="error">
+            </el-alert>
+            <el-button type="primary" @click="buttonClicked">Click Me!</el-button>
+        </el-tab-pane>
+    </el-tabs>
+    <div class="line"></div>
+</div>
+
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    const vueInstance = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                visible: false,
+                txt: "he",
+                activeName: "first",
+                formDatas: [1,2,3,4]
+            }
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            buttonClicked() {
+                console.log("from console halo")
+                PrinterCall.printAnyWay("from invoke halo！！！");
+            },
+            handleClick() {
+
+            }
+        }
+    })
+</script>
+</html>
